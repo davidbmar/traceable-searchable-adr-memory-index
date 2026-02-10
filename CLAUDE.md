@@ -4,6 +4,74 @@
 
 This repo uses a **Traceable Project Memory** system. Every coding session, commit, and decision must be documented and searchable.
 
+---
+
+## 🚀 Setting Up This System in a New Repo
+
+**If you're cloning this repo as a template for your project:**
+
+### 1. Copy the Structure
+
+Copy these files/folders into your project:
+```bash
+# Copy documentation structure
+cp -r docs/project-memory/ YOUR_PROJECT/docs/
+cp -r scripts/ YOUR_PROJECT/scripts/
+
+# Copy templates (optional but recommended)
+cp -r .github/ YOUR_PROJECT/.github/
+```
+
+### 2. Install Git Hooks
+
+From your project root, run:
+```bash
+./scripts/setup-hooks.sh
+```
+
+This installs a pre-commit hook that:
+- ✅ Auto-rebuilds the session index before each commit
+- ✅ Auto-stages updated index files
+- ✅ Runs tests (if you have them)
+
+### 3. Merge Instructions into Your CLAUDE.md
+
+Copy the sections below into your existing `CLAUDE.md`:
+- **You MUST Follow These Rules** (all 6 numbered sections)
+- **Your Workflow**
+- **Always Enforce**
+
+Adapt them to fit your project's needs, but keep the core Session ID and documentation requirements.
+
+### 4. Verify Setup
+
+Test that everything works:
+```bash
+# Build the index manually (should work)
+./scripts/build-index.sh
+
+# Create a test session
+cp docs/project-memory/sessions/_template.md \
+   docs/project-memory/sessions/S-$(date +%Y-%m-%d-%H%M)-test.md
+
+# Try to commit (hook should auto-rebuild index)
+git add docs/project-memory/sessions/S-*-test.md
+git commit -m "[S-$(date +%Y-%m-%d-%H%M)-test] Test session tracking"
+```
+
+### Requirements
+
+**Portability:** This system uses only bash and standard Unix tools (grep, find, jq).
+- ✅ Works on any Unix/Linux/macOS system
+- ✅ No Node.js or dependencies required
+- ✅ Perfect for SSH into remote servers
+
+**What you need:**
+- `bash` (standard on all systems)
+- `jq` (for JSON generation - install via `brew install jq` or `apt-get install jq`)
+
+---
+
 ### You MUST Follow These Rules
 
 #### 1. Session ID Format
