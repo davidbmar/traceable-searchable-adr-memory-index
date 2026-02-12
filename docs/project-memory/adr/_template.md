@@ -37,4 +37,4 @@ PRs:
 - #123
 
 Commits:
-- `commit-hash` [SessionID] description
+- `commit-hash` description

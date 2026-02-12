@@ -17,7 +17,7 @@ Need a lightweight way to link commits to their reasoning without heavyweight to
 
 Every coding session gets a Session ID: `S-YYYY-MM-DD-HHMM-<slug>`
 
-Every commit message must include the Session ID: `[SessionID] description`
+Every commit has a human-readable subject line with `Session: S-...` in the body
 
 Every session creates a markdown file in `docs/project-memory/sessions/` that documents:
 - Goal
@@ -49,8 +49,9 @@ Every session creates a markdown file in `docs/project-memory/sessions/` that do
 
 Git log examples:
 ```
-[S-2026-02-08-1400-bootstrap-memory] Create project memory system
-[S-2026-02-08-1400-bootstrap-memory] Add session and ADR templates
+Create project memory system
+
+Session: S-2026-02-08-1400-bootstrap-memory
 ```
 
 Searching:

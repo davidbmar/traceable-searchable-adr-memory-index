@@ -97,13 +97,15 @@ Copy sections from this repo's `CLAUDE.md` into your project's `CLAUDE.md`:
 # Test the build script
 ./scripts/build-index.sh
 
-# Create a test session
+# Create a test session (HHMM is UTC)
 cp docs/project-memory/sessions/_template.md \
-   docs/project-memory/sessions/S-$(date +%Y-%m-%d-%H%M)-test.md
+   docs/project-memory/sessions/S-$(date -u +%Y-%m-%d-%H%M)-test.md
 
 # Commit (should auto-rebuild index)
 git add docs/project-memory/sessions/S-*-test.md
-git commit -m "[S-$(date +%Y-%m-%d-%H%M)-test] Test session tracking"
+git commit -m "Test session tracking
+
+Session: S-$(date -u +%Y-%m-%d-%H%M)-test"
 ```
 
 ---
@@ -118,14 +120,18 @@ Every coding session gets a unique ID:
 S-YYYY-MM-DD-HHMM-<slug>
 ```
 
+**HHMM is UTC** — always use `date -u +%Y-%m-%d-%H%M` to generate the timestamp.
+
 Example: `S-2026-02-09-1530-add-auth`
 
 ### Commit Messages
 
-Every commit MUST include the Session ID:
+Write a human-readable subject line. Put the Session ID in the commit body:
 
 ```bash
-git commit -m "[S-2026-02-09-1530-add-auth] Implement JWT authentication"
+git commit -m "Implement JWT authentication
+
+Session: S-2026-02-09-1530-add-auth"
 ```
 
 ### Session Documentation
@@ -137,6 +143,7 @@ docs/project-memory/sessions/S-2026-02-09-1530-add-auth.md
 ```
 
 Contains:
+- **Title:** Short human-readable name for the session
 - **Goal:** What you're trying to achieve
 - **Context:** Why this work is needed
 - **Plan:** How you'll do it
@@ -150,9 +157,10 @@ The pre-commit hook automatically builds a searchable index:
 
 ```
 docs/project-memory/.index/
-├── keywords.json      # JSON index for programmatic search
-├── metadata.json      # Build timestamp and stats
-└── sessions.txt       # Plain text for grep
+├── keywords.json      # Inverted keyword → session ID index (for search)
+├── metadata.json      # Per-session metadata (title, date, author, goal, keywords)
+├── sessions.txt       # Plain text for grep
+└── last-updated.txt   # Build timestamp
 ```
 
 ### Searching
@@ -221,7 +229,7 @@ apk add jq
 .
 ├── docs/
 │   └── project-memory/
-│       ├── .index/              # Auto-generated search index
+│       ├── .index/              # Auto-generated search index (keywords, metadata, plaintext)
 │       ├── adr/                 # Architecture Decision Records
 │       ├── sessions/            # Session documentation
 │       │   ├── _template.md     # Template for new sessions
@@ -252,12 +260,16 @@ Run the test suite:
 Tests verify:
 - ✅ Index builds correctly from sessions
 - ✅ JSON output is valid
-- ✅ Metadata is accurate
+- ✅ Per-session field extraction (title, date, author, goal)
+- ✅ Keyword extraction with stop-word filtering
+- ✅ Inverted keyword index (shared keywords map to multiple sessions)
 - ✅ Special characters handled
 - ✅ Sessions sorted properly
 - ✅ Empty directories handled gracefully
+- ✅ Build timestamp (last-updated.txt)
+- ✅ Title extraction and backward compatibility
 
-**29 tests total** - all must pass before committing changes to the system.
+**53 tests total** across 13 test suites - all must pass before committing changes to the system.
 
 ---
 
@@ -266,14 +278,14 @@ Tests verify:
 ### Starting Work
 
 ```bash
-# 1. Create Session ID
-SESSION_ID="S-$(date +%Y-%m-%d-%H%M)-add-login"
+# 1. Create Session ID (HHMM is UTC)
+SESSION_ID="S-$(date -u +%Y-%m-%d-%H%M)-add-login"
 
 # 2. Create session doc
 cp docs/project-memory/sessions/_template.md \
    docs/project-memory/sessions/$SESSION_ID.md
 
-# 3. Edit session doc: fill in Goal, Context, Plan
+# 3. Edit session doc: fill in Title, Goal, Context, Plan
 vim docs/project-memory/sessions/$SESSION_ID.md
 ```
 
@@ -283,9 +295,11 @@ vim docs/project-memory/sessions/$SESSION_ID.md
 # 4. Write code
 vim src/auth/login.js
 
-# 5. Commit with Session ID
+# 5. Commit with human-readable subject, Session ID in body
 git add src/auth/login.js
-git commit -m "[$SESSION_ID] Implement login endpoint"
+git commit -m "Implement login endpoint
+
+Session: $SESSION_ID"
 
 # Pre-commit hook auto-rebuilds index ✨
 ```
@@ -298,7 +312,9 @@ vim docs/project-memory/sessions/$SESSION_ID.md
 
 # 7. Commit session doc
 git add docs/project-memory/sessions/$SESSION_ID.md
-git commit -m "[$SESSION_ID] Document login implementation"
+git commit -m "Document login implementation
+
+Session: $SESSION_ID"
 
 # 8. Create PR (reference Session ID)
 gh pr create --title "Add login endpoint" \

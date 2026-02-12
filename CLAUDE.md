@@ -50,13 +50,15 @@ Test that everything works:
 # Build the index manually (should work)
 ./scripts/build-index.sh
 
-# Create a test session
+# Create a test session (HHMM is UTC)
 cp docs/project-memory/sessions/_template.md \
-   docs/project-memory/sessions/S-$(date +%Y-%m-%d-%H%M)-test.md
+   docs/project-memory/sessions/S-$(date -u +%Y-%m-%d-%H%M)-test.md
 
 # Try to commit (hook should auto-rebuild index)
 git add docs/project-memory/sessions/S-*-test.md
-git commit -m "[S-$(date +%Y-%m-%d-%H%M)-test] Test session tracking"
+git commit -m "Test session tracking
+
+Session: S-$(date -u +%Y-%m-%d-%H%M)-test"
 ```
 
 ### Requirements
@@ -81,18 +83,24 @@ Every coding session gets a unique Session ID:
 S-YYYY-MM-DD-HHMM-<slug>
 ```
 
+**HHMM is UTC** — always use `date -u +%Y-%m-%d-%H%M` to generate the timestamp.
+
 Example: `S-2026-02-08-1430-mobile-audio`
 
 #### 2. Commit Message Format
 
-Every commit message MUST include the Session ID:
+Write a **human-readable subject line**. Put the Session ID in the commit body:
 ```
-[S-YYYY-MM-DD-HHMM-slug] description of change
+Subject line describing the change
+
+Session: S-YYYY-MM-DD-HHMM-slug
 ```
 
 Example:
 ```
-[S-2026-02-08-1430-mobile-audio] Add microphone permission check
+Add microphone permission check
+
+Session: S-2026-02-08-1430-mobile-audio
 ```
 
 #### 3. Session Documentation
@@ -107,7 +115,7 @@ When starting work:
 2. **If no session exists, create one:**
    - Copy `docs/project-memory/sessions/_template.md`
    - Name it with the Session ID: `S-YYYY-MM-DD-HHMM-slug.md`
-   - Fill in Goal, Context, Plan
+   - Fill in Title, Goal, Context, Plan
 
 3. **After making changes, update the session doc:**
    - Add what changed to "Changes Made"
@@ -187,10 +195,10 @@ grep -r "" docs/project-memory/sessions/S-*.md
 
 ### Your Workflow
 
-1. **Start of work:** Create or identify Session ID
-2. **Create session doc:** Use template, fill in Goal/Context/Plan
+1. **Start of work:** Create or identify Session ID (HHMM is UTC)
+2. **Create session doc:** Use template, fill in Title/Goal/Context/Plan
 3. **Make changes:** Write code
-4. **Commit with Session ID:** `[SessionID] description`
+4. **Commit:** Human-readable subject, `Session: S-...` in body
 5. **Update session doc:** Add Changes Made, Decisions, Links
 6. **Create ADR if needed:** For significant decisions
 7. **Create PR:** Reference Session ID, link to session doc
@@ -198,7 +206,7 @@ grep -r "" docs/project-memory/sessions/S-*.md
 ### Example Workflow
 
 ```bash
-# Starting work
+# Starting work (HHMM is UTC)
 # Session ID: S-2026-02-08-1645-auth-refactor
 
 # Create session doc
@@ -206,8 +214,10 @@ cp docs/project-memory/sessions/_template.md \
    docs/project-memory/sessions/S-2026-02-08-1645-auth-refactor.md
 
 # Make changes...
-# Commit with Session ID
-git commit -m "[S-2026-02-08-1645-auth-refactor] Extract auth logic to service"
+# Commit with human-readable subject, Session ID in body
+git commit -m "Extract auth logic to service
+
+Session: S-2026-02-08-1645-auth-refactor"
 
 # Update session doc with changes and link to commit
 # Create ADR if you made a significant decision
@@ -223,8 +233,9 @@ git commit -m "[S-2026-02-08-1645-auth-refactor] Extract auth logic to service"
 
 ## Always Enforce
 
-- ✅ Every commit has `[SessionID]` prefix
-- ✅ Every session has a markdown doc
+- ✅ Session ID times are UTC (`date -u`)
+- ✅ Every commit has `Session: S-...` in the body
+- ✅ Every session has a markdown doc with a Title field
 - ✅ Significant decisions get ADRs
 - ✅ PRs reference Session IDs
 - ✅ Session docs link to commits, PRs, ADRs

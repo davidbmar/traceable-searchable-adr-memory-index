@@ -20,11 +20,14 @@ Every coding session gets a unique ID:
 S-YYYY-MM-DD-HHMM-<slug>
 ```
 
+**HHMM is UTC** — always use `date -u +%Y-%m-%d-%H%M` to generate the timestamp.
+
 Example: `S-2026-02-08-1430-mobile-audio`
 
 Rules:
 - One Session ID per vibe-coding session
-- Every commit message must include: `[SessionID] description`
+- Every commit has a human-readable subject with `Session: S-...` in the body
+- Every session doc includes a `Title:` field
 - Session IDs link commits, PRs, and ADRs together
 
 ## How It Links Together
@@ -33,8 +36,8 @@ Rules:
 Session → Commits → PRs → ADRs
 ```
 
-1. Start a session, create a session doc
-2. Make commits with `[SessionID]` prefix
+1. Start a session, create a session doc with a Title
+2. Make commits with human-readable subjects, `Session: S-...` in body
 3. Create PR, reference Session ID
 4. If you made a significant decision, write an ADR
 5. Link them all together in the docs
@@ -43,8 +46,8 @@ Session → Commits → PRs → ADRs
 
 1. Copy `sessions/_template.md`
 2. Name it with Session ID: `S-2026-02-08-1430-my-feature.md`
-3. Fill in Goal, Context, Plan
-4. Work and make commits with `[S-2026-02-08-1430-my-feature]` prefix
+3. Fill in Title, Goal, Context, Plan
+4. Work and make commits with `Session: S-2026-02-08-1430-my-feature` in body
 5. Update session doc with Changes Made, Decisions, Links
 
 ## When to Create an ADR
