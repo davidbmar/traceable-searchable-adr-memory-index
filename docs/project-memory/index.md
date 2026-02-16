@@ -89,10 +89,20 @@ Claude reads all files and understands concepts:
 
 See `examples/semantic-search-demo.md` for real examples.
 
+## Backlog
+
+Track bugs and features in `backlog/`:
+- **Bugs** use `B-NNN` prefix (e.g., `B-001-login-crash.md`)
+- **Features** use `F-NNN` prefix (e.g., `F-001-dark-mode.md`)
+- Each item gets its own markdown file
+- `backlog/README.md` has the summary table
+- Link from code comments: `# TODO: see F-001`
+
 ## Directory Structure
 
 - `sessions/` - Individual coding session logs
 - `adr/` - Architecture Decision Records
+- `backlog/` - Bug and feature backlog
 - `runbooks/` - Operational procedures
 - `architecture/` - System design docs and diagrams
 - `tools/` - Helper scripts and documentation

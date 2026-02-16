@@ -132,7 +132,16 @@ Create an ADR in `docs/project-memory/adr/` when:
 
 Use the ADR template: `docs/project-memory/adr/_template.md`
 
-#### 5. Searching Project Memory
+#### 5. Backlog (Bugs & Features)
+
+Track work items in `docs/project-memory/backlog/`:
+- **Bugs** use a `B-NNN` prefix (e.g., `B-001-login-crash.md`)
+- **Features** use an `F-NNN` prefix (e.g., `F-001-dark-mode.md`)
+- Each item gets its own markdown file with Summary, Status, Priority
+- Update `docs/project-memory/backlog/README.md` table when adding/changing items
+- Link backlog items from code comments when relevant (e.g., `# TODO: see F-001`)
+
+#### 6. Searching Project Memory
 
 To find context for code:
 
@@ -151,12 +160,17 @@ grep -r "keyword" docs/project-memory/sessions/
 grep -r "decision topic" docs/project-memory/adr/
 ```
 
+**Search backlog:**
+```bash
+grep -r "keyword" docs/project-memory/backlog/
+```
+
 **Find sessions by date:**
 ```bash
 ls docs/project-memory/sessions/S-2026-02-08*
 ```
 
-#### 6. Semantic Search (AI-Powered)
+#### 7. Semantic Search (AI-Powered)
 
 When users ask questions using **concepts** rather than exact keywords, you must do semantic search:
 
