@@ -23,7 +23,8 @@
     "S-2026-02-08-1400-listener-ui-mute",
     "S-2026-02-08-1430-migrate-project-memory",
     "S-2026-02-08-1500-fix-silence-counter",
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "chose": [
     "S-2026-02-08-1400-bootstrap-memory"
@@ -58,11 +59,13 @@
     "S-2026-02-08-1400-listener-ui-mute",
     "S-2026-02-08-1430-migrate-project-memory",
     "S-2026-02-08-1500-fix-silence-counter",
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "create": [
     "S-2026-02-08-1400-bootstrap-memory",
-    "S-2026-02-08-1430-migrate-project-memory"
+    "S-2026-02-08-1430-migrate-project-memory",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "created": [
     "S-2026-02-08-1400-bootstrap-memory",
@@ -192,11 +195,13 @@
     "S-2026-02-08-1400-listener-ui-mute",
     "S-2026-02-08-1430-migrate-project-memory",
     "S-2026-02-08-1500-fix-silence-counter",
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "added": [
     "S-2026-02-08-1400-listener-ui-mute",
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "after": [
     "S-2026-02-08-1400-listener-ui-mute",
@@ -226,7 +231,8 @@
   ],
   "build": [
     "S-2026-02-08-1400-listener-ui-mute",
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "callback": [
     "S-2026-02-08-1400-listener-ui-mute"
@@ -235,7 +241,8 @@
     "S-2026-02-08-1400-listener-ui-mute"
   ],
   "card": [
-    "S-2026-02-08-1400-listener-ui-mute"
+    "S-2026-02-08-1400-listener-ui-mute",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "class": [
     "S-2026-02-08-1400-listener-ui-mute"
@@ -247,7 +254,8 @@
     "S-2026-02-08-1400-listener-ui-mute"
   ],
   "component": [
-    "S-2026-02-08-1400-listener-ui-mute"
+    "S-2026-02-08-1400-listener-ui-mute",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "comprehensive": [
     "S-2026-02-08-1400-listener-ui-mute"
@@ -330,7 +338,8 @@
     "S-2026-02-08-1400-listener-ui-mute"
   ],
   "active": [
-    "S-2026-02-08-1430-migrate-project-memory"
+    "S-2026-02-08-1430-migrate-project-memory",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "additive": [
     "S-2026-02-08-1430-migrate-project-memory"
@@ -351,7 +360,8 @@
     "S-2026-02-08-1430-migrate-project-memory"
   ],
   "browser": [
-    "S-2026-02-08-1430-migrate-project-memory"
+    "S-2026-02-08-1430-migrate-project-memory",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "continues": [
     "S-2026-02-08-1430-migrate-project-memory"
@@ -437,7 +447,8 @@
     "S-2026-02-08-1500-fix-silence-counter"
   ],
   "accumulates": [
-    "S-2026-02-08-1500-fix-silence-counter"
+    "S-2026-02-08-1500-fix-silence-counter",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "arrives": [
     "S-2026-02-08-1500-fix-silence-counter"
@@ -467,7 +478,8 @@
     "S-2026-02-08-1500-fix-silence-counter"
   ],
   "confidence": [
-    "S-2026-02-08-1500-fix-silence-counter"
+    "S-2026-02-08-1500-fix-silence-counter",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "counter": [
     "S-2026-02-08-1500-fix-silence-counter"
@@ -555,7 +567,8 @@
     "S-2026-02-11-0020-enhanced-index-format"
   ],
   "avoids": [
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "bash": [
     "S-2026-02-11-0020-enhanced-index-format"
@@ -588,7 +601,8 @@
     "S-2026-02-11-0020-enhanced-index-format"
   ],
   "count": [
-    "S-2026-02-11-0020-enhanced-index-format"
+    "S-2026-02-11-0020-enhanced-index-format",
+    "S-2026-03-06-0146-ceo-dashboard"
   ],
   "date": [
     "S-2026-02-11-0020-enhanced-index-format"
@@ -652,5 +666,113 @@
   ],
   "json": [
     "S-2026-02-11-0020-enhanced-index-format"
+  ],
+  "12-task": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "300ms": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "404s": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "8am": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "activeview": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "admin": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "allsettled": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "api": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "applayout": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "asyncio": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "auth": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "authheaders": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "auto-poll": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "backend": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "badge": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "badges": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "bar": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "based": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "bearer": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "better": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "brief": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "briefing": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "button": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "calls": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "case-insensitive": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "ceo": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "chip": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "chips": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "claim": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "clickable": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "client-side": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "collection": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "collector": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "components": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "conditional": [
+    "S-2026-03-06-0146-ceo-dashboard"
+  ],
+  "consistency": [
+    "S-2026-03-06-0146-ceo-dashboard"
   ]
 }
