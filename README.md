@@ -110,6 +110,54 @@ Session: S-$(date -u +%Y-%m-%d-%H%M)-test"
 
 ---
 
+## Multi-Agent Sprint Orchestration
+
+Parallelize development across multiple Claude Code agents, each working in its own git worktree. Proven system architecture — just configure for your project.
+
+### How It Works
+
+1. **Write a sprint brief** — define agents and their tasks in `SPRINT_BRIEF.md`
+2. **Initialize** — `./scripts/sprint-init.sh` creates worktrees + per-agent briefs
+3. **Launch** — `./scripts/sprint-tmux.sh` opens tmux with one tab per agent
+4. **Agents work autonomously** — implement, test, commit
+5. **Merge** — `./scripts/sprint-merge.sh` merges branches in order with verification
+
+### Setup
+
+**1. Configure** — Edit `scripts/sprint-config.sh`:
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `PROJECT_SLUG` | repo directory name | Names the worktree sibling directory |
+| `DEFAULT_TEST_CMD` | safe no-op echo | Test command run by agents and during merge |
+| `GENERATE_SPRINT_REPORT` | `false` | Opt-in post-merge report generation |
+| `EPHEMERAL_FILES` | `AGENT_BRIEF.md`, `.claude-output.txt`, index files | Auto-resolved during merge conflicts |
+
+**2. Write a sprint brief** — Use the template and spec:
+- Template: `docs/project-memory/tools/SPRINT_BRIEF_TEMPLATE.md`
+- Full spec: `docs/project-memory/tools/SPRINT_BRIEF_SPEC.md`
+
+**3. Run the sprint:**
+
+```bash
+# Create worktrees
+./scripts/sprint-init.sh
+
+# Launch all agents in tmux
+./scripts/sprint-tmux.sh
+
+# After agents finish, merge into main
+./scripts/sprint-merge.sh
+```
+
+### Requirements
+
+- `tmux` (for parallel agent tabs)
+- `claude` CLI (Claude Code)
+- `bash` (standard)
+
+---
+
 ## 📖 How It Works
 
 ### Session ID Format

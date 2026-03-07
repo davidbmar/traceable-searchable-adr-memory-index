@@ -25,6 +25,9 @@ echo "Rebuilding Project Memory index..."
 # Stage updated index files if they changed
 git add docs/project-memory/.index/*.json docs/project-memory/.index/*.txt 2>/dev/null || true
 
+# Stage Sprint-Notes.md if it exists
+git add Sprint-Notes.md 2>/dev/null || true
+
 # Run tests if they exist
 if [ -f "package.json" ] && grep -q '"test"' package.json; then
     echo "Running tests before commit..."

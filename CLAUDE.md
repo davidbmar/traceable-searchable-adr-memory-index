@@ -238,12 +238,39 @@ Session: S-2026-02-08-1645-auth-refactor"
 # Create PR with Session ID
 ```
 
+#### 8. Multi-Agent Sprint Orchestration
+
+This repo includes a multi-agent sprint system for parallelizing work across multiple Claude Code agents.
+
+**Sprint Workflow:**
+1. Write a `SPRINT_BRIEF.md` in the repo root (see spec and template below)
+2. Run `./scripts/sprint-init.sh` — creates git worktrees and per-agent briefs
+3. Run `./scripts/sprint-tmux.sh` — launches tmux with one tab per agent
+4. Agents run autonomously: implement brief, run tests, auto-commit
+5. Run `./scripts/sprint-merge.sh` — merges branches in order with verification
+
+**Configuration:** Edit `scripts/sprint-config.sh` to set:
+- `PROJECT_SLUG` — worktree directory name (default: repo dir name)
+- `DEFAULT_TEST_CMD` — test command agents run (default: safe no-op)
+- `GENERATE_SPRINT_REPORT` — opt-in report generation (default: false)
+- `EPHEMERAL_FILES` — files auto-resolved during merge conflicts
+
+**Agent Rules:**
+- Agents run non-interactively — they MUST NOT ask for confirmation
+- Each agent works in its own worktree — no shared file modifications
+- Agents auto-commit when tests pass
+- Check for zero-commit branches after a sprint (indicates stuck agents)
+
 ### Quick Reference
 
 - **Session template:** `docs/project-memory/sessions/_template.md`
 - **ADR template:** `docs/project-memory/adr/_template.md`
 - **PR template:** `.github/PULL_REQUEST_TEMPLATE.md`
 - **Overview:** `docs/project-memory/index.md`
+- **Sprint config:** `scripts/sprint-config.sh`
+- **Sprint brief spec:** `docs/project-memory/tools/SPRINT_BRIEF_SPEC.md`
+- **Sprint brief template:** `docs/project-memory/tools/SPRINT_BRIEF_TEMPLATE.md`
+- **Agent prompt:** `scripts/CLAUDE_RUN_PROMPT.txt`
 
 ## Always Enforce
 
@@ -253,3 +280,4 @@ Session: S-2026-02-08-1645-auth-refactor"
 - ✅ Significant decisions get ADRs
 - ✅ PRs reference Session IDs
 - ✅ Session docs link to commits, PRs, ADRs
+- ✅ Sprint briefs follow the spec in `docs/project-memory/tools/SPRINT_BRIEF_SPEC.md`
